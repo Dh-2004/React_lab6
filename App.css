@@ -1,42 +1,138 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+:root {
+  color-scheme: light dark;
+  --primary-color: #953183;
+  --secondary-color: #692b7f;
+  --tertiary-color: #d77038;
+  --quaternary-color: #b84552;
+  --quinary-color: #8d9ea8;
+  --background-color: #e0ebe6;
+  --text-color: #e9d9d9;
+  --error-color: #ff0000;
+  --success-color: #00ff00;
+  --warning-color: #ffff00;
+  --info-color: #0000ff;
+  --light-color: #ffffff;
+} 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  max-height: 100vh;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  justify-content: center;
+  background-image: linear-gradient(to top, rgb(184, 69, 82), #d7703800);
+}
+h2{
+  color: #e0ebe6;
   text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  ;
+}
+.form-container {
+  width: 280px;
+  margin: 20px auto;
+  padding: 1rem;
+  background: linear-gradient(to bottom, #953131, #bd0b0e);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px 6px #8d9ea8;
+  border-radius: 1rem;
+  color: #e9d9d9;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+ 
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.form-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+ 
 }
 
-@keyframes logo-spin {
+.form-container form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0.3rem 0;
+  text-align: left;
+ 
+}
+
+.form-container form .form-group input,
+button {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  outline: none;
+  border: 2px solid #fff;
+}
+
+.form-container form .form-group input {
+  border: 2px solid green;
+}
+
+.form-container form .form-group input.error {
+  border: 2px solid red;
+}
+.form-container form .form-group .error-message {
+  color: red;
+}
+
+.form-container form .form-group button:disabled {
+  cursor: not-allowed;
+  -webkit-mask-image: linear-gradient(to left, #000, transparent);
+  mask-image: linear-gradient(to left, #000, transparent);
+  color: #fff;
+}
+
+.form-container form .form-group button {
+  cursor: pointer;
+  background-image: linear-gradient(to left, #c22e4e, #cb1c1c);
+  color: #fff;
+}
+
+.form-container .result {
+  margin-top: 1rem;
+  background: rgb(157, 60, 84);
+  padding: 10px;
+  border-radius: 1rem;
+  color: #e0ebe6;
+  border: 2px solid;
+  position: relative;
+}
+
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.result::after,
+.result::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 1rem;
+  padding: 10px;
+  background-image: conic-gradient(from var(--angle), rgb(83, 26, 28) 20%,transparent 10%);
+  z-index: -1;
+  animation:spin 3s linear infinite ;
+}
+
+.result::before {
+  filter: blur(1rem);
+  opacity: 0.5;
+}
+
+@keyframes spin {
   from {
-    transform: rotate(0deg);
+    --angle: 0deg;
   }
   to {
-    transform: rotate(360deg);
+    --angle: 360deg;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
